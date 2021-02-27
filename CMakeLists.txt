@@ -14,7 +14,7 @@ set(CMAKE_OBJCOPY arm-none-eabi-objcopy)
 set(CMAKE_OBJDUMP arm-none-eabi-objdump)
 set(SIZE arm-none-eabi-size)
 
-SET(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32F407ZGTX_FLASH.ld Drivers/My_Driver/INC/digital_resistor.h Drivers/My_Driver/SRC/digital_resistor.c Drivers/My_Driver/INC/basic.h Drivers/My_Driver/SRC/basic.c)
+SET(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32F407ZGTX_FLASH.ld Drivers/My_Driver/INC/xc9104.h Drivers/My_Driver/SRC/xc9104.c Drivers/My_Driver/TRANSPLANT/INC/config.h Drivers/My_Driver/INC/ad9850.h Drivers/My_Driver/SRC/ad9850.c Drivers/My_Driver/TRANSPLANT/SRC/ad9850_trans.c Drivers/My_Driver/TRANSPLANT/SRC/xc9104_trans.c Drivers/My_Driver/INC/sys.h Drivers/My_Driver/TRANSPLANT/SRC/sys_trans.c Drivers/My_Driver/TRANSPLANT/INC/xc9104_trans.h Drivers/My_Driver/TRANSPLANT/INC/ad9850_trans.h)
 
 #Uncomment for hardware floating point
 #SET(FPU_FLAGS "-mfloat-abi=hard -mfpu=fpv4-sp-d16")
@@ -39,7 +39,7 @@ add_definitions(-DUSE_HAL_DRIVER -DDEBUG -DSTM32F407xx)
 
 file(GLOB_RECURSE SOURCES "Startup/*.*" "Src/*.*" "Drivers/*.*")
 
-include_directories(Inc Drivers/CMSIS/Include Drivers/STM32F4xx_HAL_Driver/Inc Drivers/CMSIS/Device/ST/STM32F4xx/Include Drivers/STM32F4xx_HAL_Driver/Inc/Legacy Drivers/My_Driver/INC)
+include_directories(Inc Drivers/CMSIS/Include Drivers/STM32F4xx_HAL_Driver/Inc Drivers/CMSIS/Device/ST/STM32F4xx/Include Drivers/STM32F4xx_HAL_Driver/Inc/Legacy Drivers/My_Driver/INC Drivers/My_Driver/TRANSPLANT/INC)
 
 add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT})
 

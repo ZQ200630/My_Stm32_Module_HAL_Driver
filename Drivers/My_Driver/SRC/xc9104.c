@@ -1,9 +1,6 @@
-//
-// Created by 28142 on 2021/2/26.
-//
-#include "digital_resistor.h"
+#include "xc9104.h"
 
-void MyResInc() {
+void MyXC9104Inc() {
     MyOperateUD(MY_PIN_SET);
     MyDelayUs(1);
     MyOperateCS(MY_PIN_RESET);
@@ -15,7 +12,7 @@ void MyResInc() {
     MyOperateCS(MY_PIN_SET);
 }
 
-void MyResDec() {
+void MyXC9104Dec() {
     MyOperateUD(MY_PIN_RESET);
     MyDelayUs(1);
     MyOperateCS(MY_PIN_RESET);
@@ -27,25 +24,25 @@ void MyResDec() {
     MyOperateCS(MY_PIN_SET);
 }
 
-void MyResClear() {
+void MyXC9104Clear() {
     for (int i = 0; i < 120; ++i) {
-        MyResDec();
+        MyXC9104Dec();
     }
 }
 
-void MyResIncValue(int Value) {
+void MyXC9104IncValue(int Value) {
     for (int i = 0; i < Value; i++) {
-        MyResInc();
+        MyXC9104Inc();
     }
 }
 
-void MyResDecValue(int Value) {
+void MyXC9104DecValue(int Value) {
     for (int i = 0; i < Value; i++) {
-        MyResDec();
+        MyXC9104Dec();
     }
 }
 
-void MyResToValue(int Value) {
-    MyResClear();
-    MyResDecValue(Value);
+void MyXC9104ToValue(int Value) {
+    MyXC9104Clear();
+    MyXC9104DecValue(Value);
 }
